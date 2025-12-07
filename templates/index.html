@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="icon" type="image/svg+xml" href="/vite.svg">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>What's kept in time</title>
+	</head>
+	<body>
+		<h3>What's kept in time</h3>
+		{{ if . }}
+		<p>{{ .Id }}</p>
+		<p>{{ .Title }}</p>
+		{{ end }}
+	</body>
+</html>
