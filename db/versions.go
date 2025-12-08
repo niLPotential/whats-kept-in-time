@@ -16,13 +16,13 @@ type VersionData struct {
 }
 
 func QueryVersions(ctx context.Context, dbpool *pgxpool.Pool) ([]VersionData, error) {
-	rows, err := dbpool.Query(ctx, "SELECT (id, cn, en, jp, kr) from versions")
+	rows, err := dbpool.Query(ctx, "SELECT id, kr from versions")
 	if err != nil {
 		return nil, err
 	}
 	return pgx.CollectRows(rows, func(row pgx.CollectableRow) (VersionData, error) {
 		var data VersionData
-		err := row.Scan(data.Id, data.Cn, data.En, data.Jp, data.Kr)
+		err := row.Scan(&data.Id, &data.Kr)
 		return data, err
 	})
 }
