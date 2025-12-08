@@ -3,7 +3,9 @@
 	<menu>
 		{{ range . }}
 		<li>
-			<button type="submit" name="version" value="{{ .Id }}">{{ .Id }}</button>
+			<button type="submit" name="version" value="{{ .Id }}">
+				{{ .Id }}: {{ .Kr }}
+			</button>
 		</li>
 		{{ end }}
 	</menu>
