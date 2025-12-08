@@ -1,0 +1,10 @@
+{{ define "wallpapers" }}
+<ul>
+	{{ range .}}
+	<li>
+		<p>{{ .Id }}</p>
+		<p>{{ .Title }}</p>
+	</li>
+	{{ end }}
+</ul>
+{{ end }}
