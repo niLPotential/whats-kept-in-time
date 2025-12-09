@@ -2,7 +2,9 @@
 <ul>
 	{{ range .}}
 	<li>
-		<p>{{ .Id }}: {{ .Title }}</p>
+		<a href="/wallpapers/{{ .Id }}">
+			<p>{{ .Id }}: {{ .Title }}</p>
+		</a>
 	</li>
 	{{ end }}
 </ul>
