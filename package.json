@@ -1,0 +1,11 @@
+{
+	"name": "whats-kept-in-time",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"sass": "sass --load-path=node_modules/@picocss/pico/scss styles/style.scss static/styles/style.css"
+	},
+	"dependencies": {
+		"@picocss/pico": "^2.1.1"
+	}
+}
