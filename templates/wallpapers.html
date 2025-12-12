@@ -11,10 +11,14 @@
 {{ end }}
 
 {{ define "wallpaper" }}
-<dialog open id="modal">
+<dialog open id="modal" data-ref="modal">
 	<article>
 		<header>
-			<button aria-label="Close" rel="prev"></button>
+			<button
+				aria-label="Close"
+				rel="prev"
+				data-on:click="$modal.close()"
+			></button>
 		</header>
 
 		<img src="{{ .PictureURL }}">
