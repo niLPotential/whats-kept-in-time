@@ -1,13 +1,15 @@
 {{ define "versions" }}
-<form action="/wallpapers">
-	<menu>
-		{{ range . }}
-		<li>
-			<button type="submit" name="version" value="{{ .ID }}">
-				{{ .ID }}: {{ .KR }}
-			</button>
-		</li>
-		{{ end }}
-	</menu>
-</form>
+<aside>
+	<nav>
+		<ul data-signals:version="" data-on:click="@get('/wallpapers')">
+			{{ range . }}
+			<li>
+				<button data-on:click="$version = {{ .ID }}">
+					{{ .ID }}: {{ .KR }}
+				</button>
+			</li>
+			{{ end }}
+		</ul>
+	</nav>
+</aside>
 {{ end }}

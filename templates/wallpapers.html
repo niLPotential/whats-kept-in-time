@@ -1,11 +1,30 @@
 {{ define "wallpapers" }}
-<ul>
+<ul id="wallpapers">
 	{{ range .}}
 	<li>
-		<a href="/wallpapers/{{ .ID }}">
+		<button data-on:click="@get('/wallpapers/{{ .ID }}')">
 			<p>{{ .ID }}: {{ .Title }}</p>
-		</a>
+		</button>
 	</li>
 	{{ end }}
 </ul>
+{{ end }}
+
+{{ define "wallpaper" }}
+<dialog open id="modal">
+	<article>
+		<header>
+			<button aria-label="Close" rel="prev"></button>
+		</header>
+
+		<img src="{{ .PictureURL }}">
+		<div class="grid">
+			<div>{{ .Version }}</div>
+			<div>Characters</div>
+			<div>
+				<a href="{{ .PictureURL }}">Source</a>
+			</div>
+		</div>
+	</article>
+</dialog>
 {{ end }}

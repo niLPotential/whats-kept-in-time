@@ -6,14 +6,11 @@ import (
 	"net/http"
 
 	"nilpotential/whats-kept-in-time/db"
+
+	"github.com/starfederation/datastar-go/datastar"
 )
 
 var templates = template.Must(template.ParseGlob("./templates/*.html"))
-
-type PageData struct {
-	Versions   []db.Version
-	Wallpapers []db.Wallpaper
-}
 
 func NewHandler(log *slog.Logger, db *db.DB) http.Handler {
 	return &Handler{
@@ -36,24 +33,46 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+type Signals struct {
+	Version string `json:"version"`
+}
+
 func (h *Handler) Get(w http.ResponseWriter, r *http.Request) {
-	var list []db.Wallpaper
-	var err error
 	if id := r.PathValue("id"); len(id) > 0 {
-		data, err := h.DB.GetWallpaperById(r.Context(), id)
+		wallpaper, err := h.DB.GetWallpaperById(r.Context(), id)
 		if err != nil {
 			h.Log.Error("Failed to get wallpaper", slog.Any("error", err))
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		list = []db.Wallpaper{data}
-	} else if version := r.FormValue("version"); len(version) > 0 {
-		list, err = h.DB.ListWallpapersByVersion(r.Context(), version)
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		err = templates.ExecuteTemplate(w, "wallpaper", wallpaper)
+		if err != nil {
+			h.Log.Error("Failed to execute template", slog.Any("error", err))
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+		return
+	} else if data := r.FormValue("datastar"); len(data) > 0 {
+		signals := &Signals{}
+		err := datastar.ReadSignals(r, signals)
+		if err != nil {
+			h.Log.Error("Failed to read datastar signal", slog.Any("error", err))
+			http.Error(w, err.Error(), http.StatusBadRequest)
+			return
+		}
+		list, err := h.DB.ListWallpapersByVersion(r.Context(), signals.Version)
 		if err != nil {
 			h.Log.Error("Failed to list wallpapers", slog.Any("error", err))
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		err = templates.ExecuteTemplate(w, "wallpapers", list)
+		if err != nil {
+			h.Log.Error("Failed to execute template", slog.Any("error", err))
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+		return
 	}
 
 	versions, err := h.DB.ListVersions(r.Context())
@@ -63,7 +82,7 @@ func (h *Handler) Get(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = templates.ExecuteTemplate(w, "index.html", PageData{versions, list})
+	err = templates.ExecuteTemplate(w, "index.html", versions)
 	if err != nil {
 		h.Log.Error("Failed to execute template", slog.Any("error", err))
 		http.Error(w, err.Error(), http.StatusInternalServerError)

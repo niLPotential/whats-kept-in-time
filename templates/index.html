@@ -4,11 +4,24 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="/static/styles/style.css">
+		<script
+			type="module"
+			src="https://cdn.jsdelivr.net/gh/starfederation/datastar@1.0.0-RC.6/bundles/datastar.js"
+		></script>
 		<title>What's kept in time</title>
 	</head>
 	<body>
-		<h3>What's kept in time</h3>
-		{{ template "versions" .Versions }}
-		{{ template "wallpapers" .Wallpapers }}
+		<header class="container">What's kept in time</header>
+
+		<main class="container">
+			<div class="grid">
+				{{ template "versions" . }}
+				<ul id="wallpapers"></ul>
+			</div>
+		</main>
+
+		<footer class="container">Footer</footer>
+
+		<dialog id="modal"></dialog>
 	</body>
 </html>
