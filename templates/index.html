@@ -10,17 +10,35 @@
 		></script>
 		<title>What's kept in time</title>
 	</head>
+
 	<body>
-		<header class="container">What's kept in time</header>
+		<div class="layout">
+			<aside class="sidebar">
+				<header>What's kept in time</header>
 
-		<main class="container">
-			<div class="grid">
-				{{ template "versions" . }}
-				<ul id="wallpapers"></ul>
-			</div>
-		</main>
+				<nav class="sidebar__content">
+					<ul data-signals:version="" data-on:click="@get('/wallpapers')">
+						{{ range . }}
+						<li>
+							<button
+								type="button"
+								class="btn btn--primary"
+								data-on:click="$version = {{ .ID }}"
+							>
+								{{ .ID }}: {{ .KR }}
+							</button>
+						</li>
+						{{ end }}
+					</ul>
+				</nav>
 
-		<footer class="container">Footer</footer>
+				<footer>Footer</footer>
+			</aside>
+
+			<main class="container">
+				<div id="gallery"></div>
+			</main>
+		</div>
 
 		<dialog id="modal"></dialog>
 	</body>

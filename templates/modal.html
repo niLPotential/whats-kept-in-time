@@ -1,0 +1,33 @@
+{{ define "modal" }}
+<dialog
+	id="modal"
+	class="modal"
+	data-ref="modal"
+	data-on:datastar-fetch="evt.detail.type === 'finished' && el.showModal()"
+>
+	<article>
+		<header class="modal__header">
+			<button
+				autofocus
+				class="btn btn--icon btn--sm btn--light"
+				aria-label="Close"
+				data-on:click="$modal.close()"
+			>
+				X
+			</button>
+		</header>
+
+		<div class="modal__body">
+			<img src="{{ .PictureURL }}">
+		</div>
+
+		<footer class="modal__footer">
+			<div>{{ .Version }}</div>
+			<div>Characters</div>
+			<div>
+				<a href="{{ .PictureURL }}">Source</a>
+			</div>
+		</footer>
+	</article>
+</dialog>
+{{ end }}

@@ -46,7 +46,7 @@ func (h *Handler) Get(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
-		err = templates.ExecuteTemplate(w, "wallpaper", wallpaper)
+		err = templates.ExecuteTemplate(w, "modal", wallpaper)
 		if err != nil {
 			h.Log.Error("Failed to execute template", slog.Any("error", err))
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -67,7 +67,7 @@ func (h *Handler) Get(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
-		err = templates.ExecuteTemplate(w, "wallpapers", list)
+		err = templates.ExecuteTemplate(w, "gallery", list)
 		if err != nil {
 			h.Log.Error("Failed to execute template", slog.Any("error", err))
 			http.Error(w, err.Error(), http.StatusInternalServerError)

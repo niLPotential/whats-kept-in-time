@@ -1,1 +1,9 @@
-@use "pico";
+@use "sprucecss/scss/spruce" as * with ($settings : ("css-custom-properties": true));
+
+@forward "container";
+@forward "gallery";
+@forward "modal";
+@forward "sidebar";
+
+@include generate-normalize;
+@include generate-styles;

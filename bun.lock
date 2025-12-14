@@ -5,11 +5,11 @@
     "": {
       "name": "whats-kept-in-time",
       "dependencies": {
-        "@picocss/pico": "^2.1.1",
+        "sprucecss": "^2.3.4",
       },
     },
   },
   "packages": {
-    "@picocss/pico": ["@picocss/pico@2.1.1", "", {}, "sha512-kIDugA7Ps4U+2BHxiNHmvgPIQDWPDU4IeU6TNRdvXQM1uZX+FibqDQT2xUOnnO2yq/LUHcwnGlu1hvf4KfXnMg=="],
+    "sprucecss": ["sprucecss@2.3.4", "", {}, "sha512-GvOLoor9PRnjJ6x+4YcWn2azEIUs/EmhO16GXqeO+BbeX29I0CZY1zzZhX6SH7W8llQhFQcy8oTg7nAkt9KKSQ=="],
   }
 }

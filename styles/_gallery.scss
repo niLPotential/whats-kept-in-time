@@ -1,0 +1,36 @@
+@use "sprucecss/scss/spruce" as *;
+
+.gallery {
+  $this: &;
+
+  img {
+    border-radius: config("border-radius-sm", $display);
+    object-fit: cover;
+  }
+
+  &-item {
+    margin-block: 0;
+  }
+
+  &--even {
+    @include layout-grid("m", 15rem);
+
+    img {
+      aspect-ratio: 1;
+    }
+  }
+
+
+  &--uneven {
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-gap: spacer-clamp("s", "m");
+    grid-template-columns: repeat(6, minmax(0, 1fr))
+  }
+
+  img {
+    aspect-ratio: 3 / 2;
+    block-size: 100%;
+    inline-size: 100%;
+  }
+}

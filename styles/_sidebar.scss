@@ -1,0 +1,36 @@
+@use "sprucecss/scss/spruce" as *;
+
+.layout {
+  @include layout-sidebar();
+}
+
+.sidebar {
+  @include layout-stack("s");
+  padding-block: spacer-clamp('xs', 's');
+  padding-inline: spacer-clamp('s', 'm');
+
+  & header {
+    font-size: font-size("h3");
+    text-align: center
+  }
+
+  & nav {
+
+    ul {
+      @include layout-stack("s");
+      list-style: none;
+      margin-block: 0;
+      padding: 0;
+    }
+
+    li {}
+
+    button {
+      width: 100%
+    }
+  }
+
+  & footer {
+    text-align: center
+  }
+}

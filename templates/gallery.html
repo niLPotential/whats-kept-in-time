@@ -1,0 +1,15 @@
+{{ define "gallery" }}
+<div id="gallery" class="gallery gallery--even">
+	{{ range .}}
+	<figure class="gallery-item">
+		<button
+			type="button"
+			class="btn btn--secondary"
+			data-on:click="@get('/wallpapers/{{ .ID }}')"
+		>
+			<img src="{{ .PictureURL }}" alt="wallpaper-{{ .ID }}" loading="lazy">
+		</button>
+	</figure>
+	{{ end }}
+</div>
+{{ end }}
