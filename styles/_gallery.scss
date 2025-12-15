@@ -12,6 +12,10 @@
     margin-block: 0;
   }
 
+  button {
+    border-width: 4px;
+  }
+
   &--even {
     @include layout-grid("m", 15rem);
 

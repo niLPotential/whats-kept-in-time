@@ -1,4 +1,4 @@
-@use "sprucecss/scss/spruce" as * with ($settings : ("css-custom-properties": true));
+@use "sprucecss/scss/spruce" as *;
 
 @forward "container";
 @forward "gallery";

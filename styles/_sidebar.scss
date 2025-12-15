@@ -1,7 +1,7 @@
 @use "sprucecss/scss/spruce" as *;
 
 .layout {
-  @include layout-sidebar();
+  @include layout-sidebar(0, 20rem);
 }
 
 .sidebar {
@@ -17,17 +17,11 @@
   & nav {
 
     ul {
+      @include clear-list;
       @include layout-stack("s");
-      list-style: none;
-      margin-block: 0;
-      padding: 0;
     }
 
     li {}
-
-    button {
-      width: 100%
-    }
   }
 
   & footer {
