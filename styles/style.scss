@@ -1,4 +1,9 @@
-@use "sprucecss/scss/spruce" as *;
+@use "sprucecss/scss/spruce" as * with ($colors: ("btn": ('light-background': hsl(259deg 53% 94%),
+      'light-background-hover': hsl(262deg 71% 49%),
+      'light-focus-ring': hsl(262deg 71% 49%),
+      'light-foreground': hsl(262deg 71% 49%),
+      'light-foreground-hover': hsl(0deg 0% 100%),
+    )));
 
 @forward "container";
 @forward "gallery";

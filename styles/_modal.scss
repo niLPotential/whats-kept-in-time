@@ -5,6 +5,16 @@ body:has(.modal[open]) {
   overflow: hidden;
 }
 
+.btn--light {
+  @include btn-variant('light');
+
+  &.btn--active {
+    background-color: color('light-background-hover', 'btn');
+    border-color: color('light-background-hover', 'btn');
+    color: color('light-foreground-hover', 'btn');
+  }
+}
+
 .modal {
   $this: &;
 
@@ -14,13 +24,21 @@ body:has(.modal[open]) {
 
   @include set-css-variable((--inline-size: 34rem));
   background-color: color("background");
+  block-size: auto;
   border: 1px solid color("border");
   border-radius: config("border-radius-sm", $display);
   box-shadow: 0 0 spacer("xxs") hsl(201.15deg 72.03% 32.71% / 5%);
-  inline-size: get-css-variable(--inline-size);
-  max-inline-size: 100%;
+  inset: spacer("l:xl");
   outline: 0;
   position: relative;
+
+  & article {
+    block-size: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   &__header {
     align-items: start;
@@ -30,14 +48,17 @@ body:has(.modal[open]) {
     position: absolute;
   }
 
-  &__title {
-    font-size: font-size("h3");
-    font-weight: 600;
-    margin-block: 0;
-  }
-
   &__body {
+    display: flex;
+    flex: auto;
+    min-block-size: 0;
+    min-inline-size: 0;
     padding: spacer-clamp("s", "m");
+
+    img {
+      max-block-size: 100%;
+      max-inline-size: 100%;
+    }
   }
 
   &__footer {
@@ -50,11 +71,6 @@ body:has(.modal[open]) {
 
     &--space-between {
       justify-content: space-between;
-    }
-
-    input {
-      flex-grow: 1;
-      max-inline-size: 25rem;
     }
   }
 }

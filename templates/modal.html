@@ -3,13 +3,14 @@
 	id="modal"
 	class="modal"
 	data-ref="modal"
+	data-on:click__outside="el.close()"
 	data-on:datastar-fetch="evt.detail.type === 'finished' && el.showModal()"
 >
 	<article>
 		<header class="modal__header">
 			<button
 				autofocus
-				class="btn btn--icon btn--sm btn--light"
+				class="btn btn--icon btn--light"
 				aria-label="Close"
 				data-on:click="$modal.close()"
 			>
