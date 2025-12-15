@@ -23,16 +23,11 @@ body:has(.modal[open]) {
   position: relative;
 
   &__header {
-    aline-items: center;
+    align-items: start;
     display: flex;
-    flex-wrap: wrap;
-    gap: spacer("s");
-    justify-content: space-between;
-    padding: spacer("s") spacer-clamp("s", "m") 0;
-
-    &-caption {
-      @include layout-stack(0);
-    }
+    inset: spacer("l");
+    justify-content: end;
+    position: absolute;
   }
 
   &__title {
@@ -43,7 +38,6 @@ body:has(.modal[open]) {
 
   &__body {
     padding: spacer-clamp("s", "m");
-    @include layout-stack("s");
   }
 
   &__footer {
