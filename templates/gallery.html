@@ -6,7 +6,7 @@
 			type="button"
 			class="btn btn--outline-secondary btn--icon"
 			aria-label="Wallpaper {{ .ID }}"
-			data-on:click="@get('/wallpapers/{{ .ID }}')"
+			data-on:click="@get('/wallpapers/{{ .ID }}').then(() => $modal.showModal())"
 		>
 			<img src="{{ .PictureURL }}" alt="wallpaper-{{ .ID }}" loading="lazy">
 		</button>

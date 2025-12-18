@@ -42,10 +42,9 @@
   inline-size: 100%;
 }
 
-body:has(.modal[open]) {
-  overflow: hidden;
-}
-
+/* body:has(.modal[open]) { */
+/* overflow: hidden; */
+/* } */
 .btn--light:focus-visible {
   outline: 2px solid var(--spruce-btn-color-light-focus-ring);
   outline-offset: 2px;
@@ -66,26 +65,31 @@ body:has(.modal[open]) {
   color: var(--spruce-btn-color-light-foreground-hover);
 }
 
-.modal::backdrop {
+.modal-backdrop:open {
+  align-items: center;
   background-color: hsla(208, 9%, 42%, 0.5);
-}
-.modal {
-  --spruce-inline-size: 34rem;
-  background-color: var(--spruce-base-color-background);
   block-size: auto;
+  display: flex;
+  flex-direction: column;
+  inline-size: auto;
+  justify-content: center;
+  max-block-size: none;
+  max-inline-size: none;
+  overflow-y: auto;
+}
+
+.modal {
+  align-items: center;
+  background-color: var(--spruce-base-color-background);
   border: 1px solid var(--spruce-base-color-border);
   border-radius: 0.425rem;
   box-shadow: 0 0 0.25rem hsla(201.15, 72.03%, 32.71%, 0.05);
-  inset: 3rem 4.5rem;
-  outline: 0;
-  position: relative;
-}
-.modal article {
-  block-size: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  max-block-size: 100%;
+  max-inline-size: 100%;
+  position: relative;
 }
 .modal__header {
   align-items: start;
@@ -95,8 +99,10 @@ body:has(.modal[open]) {
   position: absolute;
 }
 .modal__body {
+  max-block-size: 100%;
   display: flex;
   flex: auto;
+  max-inline-size: auto;
   min-block-size: 0;
   min-inline-size: 0;
   padding: clamp(1rem, 5vw, 1.5rem);
@@ -107,6 +113,7 @@ body:has(.modal[open]) {
 }
 .modal__footer {
   align-items: center;
+  align-self: normal;
   border-block-start: 1px solid var(--spruce-base-color-border);
   display: flex;
   gap: 1rem;

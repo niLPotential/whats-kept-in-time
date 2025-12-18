@@ -1,12 +1,11 @@
 {{ define "modal" }}
 <dialog
 	id="modal"
-	class="modal"
+	class="modal-backdrop"
 	data-ref="modal"
-	data-on:click__outside="el.close()"
-	data-on:datastar-fetch="evt.detail.type === 'finished' && el.showModal()"
+	data-on:click="el.close()"
 >
-	<article>
+	<article class="modal">
 		<header class="modal__header">
 			<button
 				autofocus
