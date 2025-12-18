@@ -1,10 +1,10 @@
 {{ define "gallery" }}
-<div id="gallery" class="gallery gallery--even">
+<div class="grid" id="gallery">
 	{{ range .}}
-	<figure class="gallery-item">
+	<figure>
 		<button
 			type="button"
-			class="btn btn--outline-secondary btn--icon"
+			class="outline secondary"
 			aria-label="Wallpaper {{ .ID }}"
 			data-on:click="@get('/wallpapers/{{ .ID }}').then(() => $modal.showModal())"
 		>

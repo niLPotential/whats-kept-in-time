@@ -1,0 +1,15 @@
+@use "pico" as *;
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(#{$css-var-prefix}spacing);
+
+  &> :first-child {
+    flex: initial;
+  }
+
+  &> :last-child {
+    flex: 1 1;
+  }
+}

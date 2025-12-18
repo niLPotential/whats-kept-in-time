@@ -3,9 +3,9 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"sass": "sass --load-path=node_modules/ styles/style.scss static/styles/style.css"
+		"sass": "sass --load-path=node_modules/@picocss/pico/scss styles/style.scss static/style.css"
 	},
 	"dependencies": {
-		"sprucecss": "^2.3.4"
+		"@picocss/pico": "^2.1.1"
 	}
 }

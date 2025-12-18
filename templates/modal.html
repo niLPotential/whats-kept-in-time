@@ -1,27 +1,21 @@
 {{ define "modal" }}
-<dialog
-	id="modal"
-	class="modal-backdrop"
-	data-ref="modal"
-	data-on:click="el.close()"
->
-	<article class="modal">
-		<header class="modal__header">
+<dialog id="modal" data-ref="modal">
+	<article>
+		<header>
 			<button
-				autofocus
-				class="btn btn--icon btn--light"
 				aria-label="Close"
+				autofocus
+				class="contrast"
 				data-on:click="$modal.close()"
-			>
-				X
-			</button>
+				rel="prev"
+			></button>
 		</header>
 
-		<div class="modal__body">
+		<div>
 			<img src="{{ .PictureURL }}">
 		</div>
 
-		<footer class="modal__footer modal__footer--space-between">
+		<footer>
 			<div>{{ .Version }}</div>
 			<div>Characters</div>
 			<div>
