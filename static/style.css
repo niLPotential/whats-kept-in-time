@@ -2810,6 +2810,11 @@ textarea,
   grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
 }
 
+.indicator {
+  background-color: red;
+  position: absolute;
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
@@ -2870,7 +2875,7 @@ main > aside nav {
   margin-top: calc(var(--pico-block-spacing-vertical) / 2);
   position: sticky;
   top: calc(var(--pico-block-spacing-vertical) / 2);
-  /* max-height: calc(- var(--pico-spacing)); */
+  max-height: calc(100dvh - var(--pico-spacing));
   overflow: auto;
   transition: top var(--pico-transition);
   transition-delay: 0.05s;
