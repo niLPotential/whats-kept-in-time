@@ -2816,7 +2816,7 @@ main {
   gap: var(--pico-spacing);
 }
 main > :first-child {
-  flex: initial;
+  flex: none;
 }
 main > :last-child {
   flex: 1 1;
@@ -2866,7 +2866,19 @@ dialog > article > footer {
   justify-content: space-around;
 }
 
-nav li button {
+main > aside nav {
+  margin-top: calc(var(--pico-block-spacing-vertical) / 2);
+  position: sticky;
+  top: calc(var(--pico-block-spacing-vertical) / 2);
+  /* max-height: calc(- var(--pico-spacing)); */
+  overflow: auto;
+  transition: top var(--pico-transition);
+  transition-delay: 0.05s;
+}
+main > aside nav ul:first-of-type {
+  margin: 0;
+}
+main > aside nav li button {
   width: 100%;
 }
 

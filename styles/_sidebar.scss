@@ -1,3 +1,22 @@
-nav li button {
-  width: 100%
+@use "settings" as *;
+
+main>aside {
+  & nav {
+    margin-top: calc(var(#{$css-var-prefix}block-spacing-vertical) / 2);
+
+    position: sticky;
+    top: calc((var(#{$css-var-prefix}block-spacing-vertical) / 2));
+    max-height: calc(100dvh - var(#{$css-var-prefix}spacing));
+    overflow: auto;
+    transition: top var(#{$css-var-prefix}transition);
+    transition-delay: 0.05s;
+
+    & ul:first-of-type {
+      margin: 0;
+    }
+
+    & li button {
+      width: 100%
+    }
+  }
 }
