@@ -9,7 +9,7 @@
 			data-indicator:fetching
 			data-on:click="@get('/wallpapers/{{ .ID }}').then(() => $modal.showModal())"
 		>
-			<img src="{{ .PictureURL }}" alt="wallpaper-{{ .ID }}" loading="lazy">
+			<img src="{{ .TransformedURL }}" alt="wallpaper-{{ .ID }}" loading="lazy">
 		</button>
 	</figure>
 	{{ end }}

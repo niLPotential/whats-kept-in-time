@@ -45,6 +45,7 @@ func (h *Handler) Get(w http.ResponseWriter, r *http.Request) {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
+		wallpaper.TransformedURL = db.BuildURLFromId(wallpaper.ID)
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		err = templates.ExecuteTemplate(w, "modal", wallpaper)
 		if err != nil {
@@ -65,6 +66,9 @@ func (h *Handler) Get(w http.ResponseWriter, r *http.Request) {
 			h.Log.Error("Failed to list wallpapers", slog.Any("error", err))
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
+		}
+		for i, wallpaper := range list {
+			list[i].TransformedURL = db.BuildURLFromId(wallpaper.ID)
 		}
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		err = templates.ExecuteTemplate(w, "gallery", list)
