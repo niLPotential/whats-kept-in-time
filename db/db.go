@@ -27,9 +27,8 @@ func (db *DB) ListWallpapersByVersion(ctx context.Context, version string) ([]Wa
 	if err != nil {
 		return nil, err
 	}
-	return pgx.CollectRows(rows, func(row pgx.CollectableRow) (Wallpaper, error) {
-		var data Wallpaper
-		err := row.Scan(&data.ID, &data.Title, &data.Version, &data.PictureURL)
+	return pgx.CollectRows(rows, func(row pgx.CollectableRow) (data Wallpaper, err error) {
+		err = row.Scan(&data.ID, &data.Title, &data.Version, &data.PictureURL)
 		return data, err
 	})
 }
@@ -39,9 +38,8 @@ func (db *DB) ListVersions(ctx context.Context) ([]Version, error) {
 	if err != nil {
 		return nil, err
 	}
-	return pgx.CollectRows(rows, func(row pgx.CollectableRow) (Version, error) {
-		var data Version
-		err := row.Scan(&data.ID, &data.KR)
+	return pgx.CollectRows(rows, func(row pgx.CollectableRow) (data Version, err error) {
+		err = row.Scan(&data.ID, &data.KR)
 		return data, err
 	})
 
@@ -56,8 +54,9 @@ type Version struct {
 }
 
 type Wallpaper struct {
-	ID         string
-	Title      string
-	Version    string
-	PictureURL string
+	ID             string
+	Title          string
+	Version        string
+	PictureURL     string
+	TransformedURL string
 }
