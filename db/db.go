@@ -23,12 +23,12 @@ func (db *DB) GetWallpaperById(ctx context.Context, id string) (data Wallpaper, 
 }
 
 func (db *DB) ListWallpapersByVersion(ctx context.Context, version string) ([]Wallpaper, error) {
-	rows, err := db.Pool.Query(ctx, "SELECT id, title, version, pictureurl FROM wallpapers WHERE version=$1", version)
+	rows, err := db.Pool.Query(ctx, "SELECT id, title, version, pictureurl, isportrait FROM wallpapers WHERE version=$1", version)
 	if err != nil {
 		return nil, err
 	}
 	return pgx.CollectRows(rows, func(row pgx.CollectableRow) (data Wallpaper, err error) {
-		err = row.Scan(&data.ID, &data.Title, &data.Version, &data.PictureURL)
+		err = row.Scan(&data.ID, &data.Title, &data.Version, &data.PictureURL, &data.IsPortrait)
 		return data, err
 	})
 }
@@ -59,4 +59,5 @@ type Wallpaper struct {
 	Version        string
 	PictureURL     string
 	TransformedURL string
+	IsPortrait     bool
 }
