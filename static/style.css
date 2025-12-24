@@ -2815,8 +2815,10 @@ textarea,
 #gallery .portrait {
   grid-row: span 2;
 }
-#gallery .landscape {
-  grid-column: span 2;
+@media (min-width: 1024px) {
+  #gallery .landscape {
+    grid-column: span 2;
+  }
 }
 
 main {
