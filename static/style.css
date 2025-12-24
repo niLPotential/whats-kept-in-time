@@ -2827,10 +2827,10 @@ main {
   gap: var(--pico-spacing);
 }
 main > :first-child {
-  flex: none;
+  flex: 1 16rem;
 }
 main > :last-child {
-  flex: 1 1;
+  flex: 999 50%;
 }
 
 dialog {

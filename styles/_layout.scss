@@ -6,10 +6,10 @@ main {
   gap: var(#{$css-var-prefix}spacing);
 
   &> :first-child {
-    flex: none;
+    flex: 1 16rem;
   }
 
   &> :last-child {
-    flex: 1 1;
+    flex: 999 50%;
   }
 }
