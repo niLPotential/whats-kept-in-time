@@ -2827,10 +2827,10 @@ main {
   gap: var(--pico-spacing);
 }
 main > :first-child {
-  flex: 1 16rem;
+  flex: auto;
 }
 main > :last-child {
-  flex: 999 50%;
+  flex: 9 55%;
 }
 
 dialog {
@@ -2890,7 +2890,20 @@ main > aside nav ul:first-of-type {
   margin: 0;
 }
 main > aside nav li button {
+  display: flex;
+  gap: calc(var(--pico-spacing) / 2);
+  justify-content: center;
   width: 100%;
+}
+@media (min-width: 768px) {
+  main > aside nav li button > :last-child {
+    display: none;
+  }
+}
+@media (min-width: 1024px) {
+  main > aside nav li button > :last-child {
+    display: block;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

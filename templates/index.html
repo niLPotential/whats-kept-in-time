@@ -27,7 +27,8 @@
 						{{ range . }}
 						<li>
 							<button type="button" data-on:click="$version = {{ .ID }}">
-								{{ .ID }}: {{ .KR }}
+								<div>{{ .ID }}</div>
+								<div>{{ .KR }}</div>
 							</button>
 						</li>
 						{{ end }}

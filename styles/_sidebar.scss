@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "settings" as *;
 
 main>aside {
@@ -16,7 +17,24 @@ main>aside {
     }
 
     & li button {
-      width: 100%
+      display: flex;
+      gap: calc(var(#{$css-var-prefix}spacing) / 2);
+      justify-content: center;
+      width: 100%;
+
+      &> :last-child {
+        @if map.get($breakpoints, "md") {
+          @media (min-width: map.get(map.get($breakpoints, "md"), "breakpoint")) {
+            display: none;
+          }
+        }
+
+        @if map.get($breakpoints, "lg") {
+          @media (min-width: map.get(map.get($breakpoints, "lg"), "breakpoint")) {
+            display: block;
+          }
+        }
+      }
     }
   }
 }

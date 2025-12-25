@@ -1,4 +1,5 @@
-@use "pico" as *;
+@use "sass:map";
+@use "settings" as *;
 
 main {
   display: flex;
@@ -6,10 +7,10 @@ main {
   gap: var(#{$css-var-prefix}spacing);
 
   &> :first-child {
-    flex: 1 16rem;
+    flex: auto;
   }
 
   &> :last-child {
-    flex: 999 50%;
+    flex: 9 55%;
   }
 }
