@@ -1,0 +1,21 @@
+@use "sass:map";
+@use "settings" as *;
+
+[aria-busy="true"]::before {
+  align-self: center;
+  left: calc(var(#{$css-var-prefix}spacing) * 2);
+  margin: 0 !important;
+  position: absolute;
+
+  @if map.get($breakpoints, "md") {
+    @media (min-width: map.get(map.get($breakpoints, "md"), "breakpoint")) {
+      left: auto;
+    }
+  }
+
+  @if map.get($breakpoints, "lg") {
+    @media (min-width: map.get(map.get($breakpoints, "lg"), "breakpoint")) {
+      left: calc(var(#{$css-var-prefix}spacing) * 1.25);
+    }
+  }
+}

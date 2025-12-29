@@ -2821,6 +2821,23 @@ textarea,
   }
 }
 
+[aria-busy=true]::before {
+  align-self: center;
+  left: calc(var(--pico-spacing) * 2);
+  position: absolute;
+}
+@media (min-width: 768px) {
+  [aria-busy=true]::before {
+    left: auto;
+    margin: 0;
+  }
+}
+@media (min-width: 1024px) {
+  [aria-busy=true]::before {
+    left: calc(var(--pico-spacing) * 1.25);
+  }
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
