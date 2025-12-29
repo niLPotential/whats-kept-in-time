@@ -6,8 +6,11 @@
 			type="button"
 			class="outline secondary"
 			aria-label="Wallpaper {{ .ID }}"
-			data-indicator:fetching
 			data-on:click="@get('/wallpapers/{{ .ID }}').then(() => $modal.showModal())"
+			data-indicator="fetchingModal{{ .ID }}"
+			data-effect="$fetching = $fetchingModal{{ .ID }}"
+			data-attr:aria-busy="$fetchingModal{{ .ID }} && 'true'"
+			data-attr:disabled="$fetching"
 		>
 			<img src="{{ .TransformedURL }}" alt="wallpaper-{{ .ID }}" loading="lazy">
 		</button>

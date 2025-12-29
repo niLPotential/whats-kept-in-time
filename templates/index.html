@@ -16,10 +16,10 @@
 			<h1>What's kept in time</h1>
 		</header>
 
-		<main class="container">
+		<main class="container" data-signals:fetching="false">
 			<aside>
 				<nav>
-					<ul data-signals="{version: '', fetching: false}">
+					<ul data-signals:version="">
 						{{ range . }}
 						<li>
 							<button

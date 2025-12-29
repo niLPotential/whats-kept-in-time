@@ -7,6 +7,22 @@
   grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
   justify-items: center;
 
+  button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    &[aria-busy="true"]::before {
+      background-color: #FFFB;
+      background-position: center;
+      background-size: 2rem auto;
+      border-radius: 100%;
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+
   & .portrait {
     grid-row: span 2;
   }
