@@ -16,17 +16,20 @@
 			<h1>What's kept in time</h1>
 		</header>
 
-		<main class="container" data-attr:disabled="$fetching">
+		<main class="container">
 			<aside>
 				<nav>
-					<ul
-						data-signals:version=""
-						data-on:click="@get('/wallpapers')"
-						data-indicator:fetching
-					>
+					<ul data-signals="{version: '', fetching: false}">
 						{{ range . }}
 						<li>
-							<button type="button" data-on:click="$version = {{ .ID }}">
+							<button
+								type="button"
+								data-on:click="$version = {{ .ID }}; @get('/wallpapers')"
+								data-indicator="fetchingVersion{{ .ID }}"
+								data-effect="$fetching = $fetchingVersion{{ .ID }}"
+								data-attr:aria-busy="$fetchingVersion{{ .ID }} && 'true'"
+								data-attr:disabled="$fetching"
+							>
 								<div>{{ .ID }}</div>
 								<div>{{ .KR }}</div>
 							</button>
