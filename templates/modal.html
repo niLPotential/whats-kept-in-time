@@ -1,6 +1,6 @@
 {{ define "modal" }}
 <dialog id="modal" data-ref="modal">
-	<article>
+	<article data-on:click__outside="$modal.close()">
 		<header>
 			<button
 				aria-label="Close"
