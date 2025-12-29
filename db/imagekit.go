@@ -6,7 +6,11 @@ import (
 
 const URLEndPoint = "https://ik.imagekit.io/apeironarchives"
 
-func BuildURLFromId(id string, isportrait bool) string {
+func BuildRawFromId(id string, isportrait bool) string {
+	return fmt.Sprintf("%s/raw/%s.jpg", URLEndPoint, id)
+}
+
+func BuildPreviewFromId(id string, isportrait bool) string {
 	var tr string
 	if isportrait {
 		tr = "tr:h-640"
